@@ -1,5 +1,4 @@
 import { Request, Response } from 'express';
-
 import db from '../database/connection';
 import convertHourToMinutos from '../utils/convertHourToMinutes';
 
@@ -43,10 +42,6 @@ export default class ClassesController {
 
     async create(request: Request, response: Response) {
         const {
-            name,
-            avatar,
-            whatsapp,
-            bio,
             subject,
             cost,
             schedule
@@ -55,14 +50,7 @@ export default class ClassesController {
         const trx = await db.transaction();
 
         try {
-            const insertedUsersIds = await trx('users').insert({
-                name,
-                avatar,
-                whatsapp,
-                bio
-            });
-        
-            const user_id = insertedUsersIds[0];
+            const user_id = 1;
         
             const insertedClassesIds = await trx('classes').insert({
                 subject,
